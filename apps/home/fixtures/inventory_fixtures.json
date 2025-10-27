@@ -1,0 +1,23 @@
+[
+    {"model": "home.EquipmentType", "pk": 1, "fields": {"name": "PC Portable"}},
+    {"model": "home.EquipmentType", "pk": 2, "fields": {"name": "PC Fixe"}},
+    {"model": "home.EquipmentType", "pk": 3, "fields": {"name": "Écran"}},
+    {"model": "home.EquipmentType", "pk": 4, "fields": {"name": "Imprimante"}},
+    {"model": "home.EquipmentType", "pk": 5, "fields": {"name": "Autre"}},
+    {"model": "home.Brand", "pk": 1, "fields": {"name": "Dell"}},
+    {"model": "home.Brand", "pk": 2, "fields": {"name": "HP"}},
+    {"model": "home.Brand", "pk": 3, "fields": {"name": "Lenovo"}},
+    {"model": "home.Brand", "pk": 4, "fields": {"name": "Asus"}},
+    {"model": "home.Brand", "pk": 5, "fields": {"name": "Canon"}},
+    {"model": "home.Brand", "pk": 6, "fields": {"name": "Epson"}},
+    {"model": "home.InventoryItem", "pk": 1, "fields": {"type": 1, "brand": 1, "model": "Latitude 5410", "serial_number": "DL123456789", "assigned_to": "Jean Dupont", "purchase_date": "2023-05-15", "notes": "PC portable pour le service IT"}},
+    {"model": "home.InventoryItem", "pk": 2, "fields": {"type": 1, "brand": 2, "model": "EliteBook 840 G7", "serial_number": "HP987654321", "assigned_to": "Marie Martin", "purchase_date": "2022-11-20", "notes": null}},
+    {"model": "home.InventoryItem", "pk": 3, "fields": {"type": 2, "brand": 3, "model": "ThinkCentre M720", "serial_number": "LN456789123", "assigned_to": null, "purchase_date": "2023-01-10", "notes": "PC de bureau pour comptabilité"}},
+    {"model": "home.InventoryItem", "pk": 4, "fields": {"type": 3, "brand": 1, "model": "UltraSharp 27", "serial_number": "DLMON789456", "assigned_to": "Sophie Legrand", "purchase_date": "2024-03-22", "notes": "Écran 4K pour design"}},
+    {"model": "home.InventoryItem", "pk": 5, "fields": {"type": 4, "brand": 5, "model": "PIXMA TS8050", "serial_number": "CN123456789", "assigned_to": null, "purchase_date": "2022-07-01", "notes": "Imprimante couleur pour bureau"}},
+    {"model": "home.InventoryItem", "pk": 6, "fields": {"type": 1, "brand": 4, "model": "ZenBook Pro", "serial_number": "AS789123456", "assigned_to": "Paul Durand", "purchase_date": "2023-09-05", "notes": "PC portable haut de gamme"}},
+    {"model": "home.InventoryItem", "pk": 7, "fields": {"type": 3, "brand": 2, "model": "ProDisplay P24", "serial_number": "HP456789123", "assigned_to": "Lucie Bernard", "purchase_date": "2023-12-15", "notes": null}},
+    {"model": "home.InventoryItem", "pk": 8, "fields": {"type": 4, "brand": 6, "model": "WorkForce WF-7720", "serial_number": "EP987654321", "assigned_to": null, "purchase_date": "2022-04-10", "notes": "Imprimante multifonction"}},
+    {"model": "home.InventoryItem", "pk": 9, "fields": {"type": 2, "brand": 1, "model": "OptiPlex 3080", "serial_number": "DL789123456", "assigned_to": "Thomas Moreau", "purchase_date": "2023-06-30", "notes": "PC pour serveur interne"}},
+    {"model": "home.InventoryItem", "pk": 10, "fields": {"type": 5, "brand": 3, "model": "ThinkPad Dock", "serial_number": "LN123789456", "assigned_to": null, "purchase_date": "2024-01-12", "notes": "Station d'accueil pour ThinkPad"}}
+]

@@ -1,0 +1,6 @@
+# Ignorer les dossiers statiques
+static/** linguist-vendored
+assets/** linguist-vendored
+
+# Ignorer les migrations Python
+home/migrations/* linguist-generated

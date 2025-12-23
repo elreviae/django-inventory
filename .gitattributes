@@ -1,8 +1,10 @@
 # Ignorer les dossiers statiques
-static/** linguist-vendored
-assets/** linguist-vendored
+apps/static/** linguist-vendored
+apps/static/assets/** linguist-vendored
 
+# Exclude filetypes
 *.css linguist-vendored
+*.scss linguist-vendored
 
 # Ignorer les migrations Python
 home/migrations/* linguist-generated

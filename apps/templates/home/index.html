@@ -19,8 +19,9 @@
             <div class="card shadow-sm">
             <div class="card-body">
 
+            {% if request.user.is_active and request.user.is_superuser %}
                 <a href="{% url 'add_item' %}" class="btn btn-primary mb-3"><i class="fa-solid fa-circle-plus"></i> Ajouter un élément</a>
-
+            {% endif %}
                 <table id="inventoryTable" class="py-4 table table-striped display">
                     <thead>
                         <tr>
@@ -29,6 +30,7 @@
                             <th>Modèle</th>
                             <th>Numéro de série</th>
                             <th>Attribué à</th>
+                            <th>Sites</th>
                             <th>Date d'achat</th>
                             <th>Notes</th>
                             <th>Actions</th>
@@ -42,15 +44,26 @@
                             <td>{{ item.model }}</td>
                             <td>{{ item.serial_number }}</td>
                             <td>{{ item.assigned_to|default:"Non attribué" }}</td>
+                            <td>
+                                {% if item.assigned_to %}
+                                    {% for site in item.assigned_to.sites.all %}
+                                        <span class="badge bg-info text-dark">{{ site.name }}</span>
+                                    {% endfor %}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
                             <td>{{ item.purchase_date|date:"d/m/Y"|default:"N/A" }}</td>
                             <td>{{ item.notes|truncatewords:10|default:"" }}</td>
                             <td class="action-buttons">
-                                <a href="{% url 'edit_item' item.pk %}" class="btn btn-sm btn-warning me-1" title="Modifier">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ item.pk }}" title="Supprimer">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                {% if request.user.is_active and request.user.is_superuser %}
+                                    <a href="{% url 'edit_item' item.pk %}" class="btn btn-sm btn-warning me-1" title="Modifier">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ item.pk }}" title="Supprimer">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                {% endif %}
                                 <!-- Modal de confirmation -->
                                 <div class="modal fade" id="deleteModal{{ item.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ item.pk }}" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -73,6 +86,7 @@
                                     </div>
                                 </div>
                             </td>
+
                         </tr>
                         {% endfor %}
                     </tbody>

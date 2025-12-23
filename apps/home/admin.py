@@ -7,6 +7,17 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
+admin.site.register(Site)
+class SiteAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+admin.site.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+
 admin.site.register(EquipmentType)
 class EquipmentTypeAdmin(admin.ModelAdmin):
     list_display = ['name']

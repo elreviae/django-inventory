@@ -2,5 +2,7 @@
 static/** linguist-vendored
 assets/** linguist-vendored
 
+*.css linguist-vendored
+
 # Ignorer les migrations Python
 home/migrations/* linguist-generated

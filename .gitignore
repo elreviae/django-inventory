@@ -31,3 +31,8 @@ apps/static/assets/node_modules
 apps/static/assets/yarn.lock
 apps/static/assets/.temp
 
+# Ignore Django Migrations in Development if you are working on team
+# Only for Development only
+ **/migrations/**
+ !**/migrations
+ !**/migrations/__init__.py

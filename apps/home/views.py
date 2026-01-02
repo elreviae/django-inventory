@@ -4,39 +4,49 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import template
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import InventoryItemForm
-from .models import InventoryItem
+from .models import *
 
-@login_required(login_url="/login/")
-def index(request):
-    context = {'segment': 'index'}
-
-    html_template = loader.get_template('home/index.html')
-    return HttpResponse(html_template.render(context, request))
-
-@login_required(login_url="/login/")
-def add_item(request):
-    if request.method == 'POST':
-        form = InventoryItemForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Redirige vers la liste après sauvegarde
-    else:
-        form = InventoryItemForm()
-    return render(request, 'home/add_item.html', {'form': form})
+# @login_required(login_url="/login/")
+# def index(request):
+#     context = {'segment': 'index'}
+#
+#     html_template = loader.get_template('home/index.html')
+#     return HttpResponse(html_template.render(context, request))
 
 
+# Page "home" ou "index" par défaut
 @login_required(login_url="/login/")
 def item_list(request):
     items = InventoryItem.objects.all()
     return render(request, 'home/index.html', {'items': items})
 
 @login_required(login_url="/login/")
+@permission_required('home.InventoryItem', raise_exception=True)
+def add_item(request):
+    if request.method == 'POST':
+        form = InventoryItemForm(request.POST)
+        if form.is_valid():
+            # form.save() :
+            # 1. Sauvegarde équipement
+            # 2. Sauvegarde liaisons ManyToMany avec les "sites"
+            form.save()
+            return redirect('home')
+    else:
+        form = InventoryItemForm()
+        # Forcer un tri alphabétique dans le formulaire
+        form.fields['assigned_to'].queryset = Employee.objects.all().order_by('full_name')
+        form.fields['site'].queryset = Site.objects.all().order_by('name')
+
+    return render(request, 'home/add_item.html', {'form': form})
+
+@login_required(login_url="/login/")
+@permission_required('home.InventoryItem', raise_exception=True)
 def edit_item(request, pk):
     item = get_object_or_404(InventoryItem, pk=pk)
     if request.method == 'POST':
@@ -49,6 +59,7 @@ def edit_item(request, pk):
     return render(request, 'home/edit_item.html', {'form': form, 'item': item})
 
 @login_required(login_url="/login/")
+@permission_required('home.InventoryItem', raise_exception=True)
 def delete_item(request, pk):
     item = get_object_or_404(InventoryItem, pk=pk)
     if request.method == 'POST':

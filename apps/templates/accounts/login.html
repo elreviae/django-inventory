@@ -14,7 +14,7 @@
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header text-center">
                             <h3 class="text-center font-weight-light my-4">
-                                <i class="fa-solid fa-boxes-stacked"></i> INVentOry
+                                <i class="fa-solid fa-boxes-stacked"></i> INVentOry <span class="badge bg-primary small">{{ APP_VERSION }}</span>
                             </h3>
                             <span class="text-center">
                                 {% if msg %}
@@ -39,12 +39,12 @@
                                     {{ form.password }}
                                 </div>
                                 <br />
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                        <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                    </div>
-                                </div>
+<!--                                <div class="form-group">-->
+<!--                                    <div class="custom-control custom-checkbox">-->
+<!--                                        <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />-->
+<!--                                        <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
                                     <button type="submit" name="login" class="btn btn-primary">Login</button>
                                 </div>

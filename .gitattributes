@@ -3,8 +3,7 @@ apps/static/** linguist-vendored
 apps/static/assets/** linguist-vendored
 
 # Ignorer Templates
-apps/template/home/ linguist-vendored
-apps/template/layouts/ linguist-vendored
+apps/template/** linguist-vendored
 
 # Exclude filetypes
 *.css linguist-vendored

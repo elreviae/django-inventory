@@ -6,13 +6,14 @@
 
 # ![Screenshot](imgs/Logo_inventory.png)
 INVentOry est une application web simple de gestion d'inventaire pour un parc informatique, 
-développée avec **Django 5.2.7**. Elle permet de gérer un inventaire d'équipements (PC portables, PC fixes, écrans, imprimantes, etc.) 
+développée avec **Django 6.0**. Elle permet de gérer un inventaire d'équipements (PC portables, PC fixes, écrans, imprimantes, etc.) 
 avec des fonctionnalités CRUD (Créer, Lire, Mettre à jour, Supprimer). 
 L'interface utilise **Bootstrap 5.3** pour un design moderne et responsive, 
 **DataTables 1.13.4** pour l'affichage des données.
 
 
 ## Fonctionnalités
+- Gestion des permissions Admin et Utilisateurs simple (Read only) .
 - Ajout et modification d'équipements via un formulaire stylé avec Bootstrap.
 - Affichage des équipements dans un tableau interactif avec tri, recherche et pagination via DataTables.
 - Suppression d'équipements avec confirmation via un modal Bootstrap.
@@ -21,7 +22,7 @@ L'interface utilise **Bootstrap 5.3** pour un design moderne et responsive,
 
 ## Technologies utilisées
 - **Python 3.12** : Langage de programmation.
-- **Django 5.2.7** : Framework web pour le backend.
+- **Django 6.0** : Framework web pour le backend.
 - **SB Admin - Django Dashboard** : https://github.com/startbootstrap/startbootstrap-sb-admin-2
 - **Bootstrap 5.3** : Framework CSS pour le design responsive.
 - **jQuery 3.6.0** : Bibliothèque JavaScript pour DataTables et interactions.
@@ -40,19 +41,26 @@ L'interface utilise **Bootstrap 5.3** pour un design moderne et responsive,
 ## Captures d'écran
 
 ### 1 : Page authentification
- ![Screenshot](imgs/authent_login.png)
+<img src="imgs/authent_login.png" alt="Screenshot" width="500">
 
 ### 2 : Formulaire d'ajout
- ![Screenshot](imgs/Formulaire_ajout.png)
+<img src="imgs/Formulaire_ajout.png" alt="Screenshot" width="500">
 
 ### 3 : Liste des équipements
- ![Screenshot](imgs/Liste_des_equipements.png)
+<img src="imgs/Liste_des_equipements.png" alt="Screenshot" width="500">
 
 ### 4 : Modal de confirmation de suppression
- ![Screenshot](imgs/Modal_confirmation_suppression.png)
+<img src="imgs/Modal_confirmation_suppression.png" alt="Screenshot" width="500">
 
 ### 5 : Interface django admin
- ![Screenshot](imgs/Base_donnees_manageable.png)
+<img src="imgs/Base_donnees_manageable.png" alt="Screenshot" width="500">
+
+### 6 : Interface django admin - Élément d'inventaire
+<img src="imgs/Base_donnees_manageable_2.png" alt="Screenshot" width="500">
+
+### 7 : Interface django admin - Modification Élément d'inventaire
+<img src="imgs/Base_donnees_manageable_3.png" alt="Screenshot" width="500">
+
 
 ## Prérequis
 - Python 3.12
@@ -65,10 +73,17 @@ L'interface utilise **Bootstrap 5.3** pour un design moderne et responsive,
    git clone https://github.com/elreviae/django-inventory.git
    cd django-inventory
    
-2. **Créer un environnement virtuel (Windows)** :
-    ```bash
+2. **Créer un environnement virtuel** :
+
+   ***- Windows*** 
+   ```bash
     python -m venv venv
     venv\Scripts\activate.ps1
+   ```
+   ***- Linux*** 
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
 
 3. **Installation des requirements** :
     ```bash

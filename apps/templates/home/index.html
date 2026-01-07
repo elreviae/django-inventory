@@ -53,7 +53,9 @@
                                     Non attribué
                                 {% endfor %}
                             </td>
-                            <td>{{ item.purchase_date|date:"d/m/Y"|default:"N/A" }}</td>
+                            <td data-order="{{ item.purchase_date|date:'Y-m-d' }}">
+                                {{ item.purchase_date|date:"d/m/Y"|default:"N/A" }}
+                            </td>
                             <td>{{ item.notes|truncatewords:10|default:"" }}</td>
                             {% if request.user.is_active and request.user.is_superuser %}
                                 <td class="action-buttons">
@@ -107,12 +109,13 @@
 <script>
         $(document).ready(function() {
             $('#inventoryTable').DataTable({
-<!--                "pageLength": 25,-->
+                "pageLength": 10, // Nb lignes affichage par défaut
                 "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
                 },
                 "columnDefs": [
-                    { "orderable": false, "targets": 7 } // Désactiver le tri sur la colonne Actions
+                    { "type": "date", "targets": 6 }, // 6 = index réel colonne 'Date'
+                    { "orderable": false, "targets": 7 } // Désactive tri colonne 'Actions'
                 ]
             });
         });

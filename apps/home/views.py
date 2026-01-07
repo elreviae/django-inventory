@@ -21,12 +21,12 @@ from .models import *
 
 
 # Page "home" ou "index" par défaut
-@login_required(login_url="/login/")
+@login_required
 def item_list(request):
     items = InventoryItem.objects.all()
     return render(request, 'home/index.html', {'items': items})
 
-@login_required(login_url="/login/")
+@login_required
 @permission_required('home.InventoryItem', raise_exception=True)
 def add_item(request):
     if request.method == 'POST':
@@ -45,7 +45,7 @@ def add_item(request):
 
     return render(request, 'home/add_item.html', {'form': form})
 
-@login_required(login_url="/login/")
+@login_required
 @permission_required('home.InventoryItem', raise_exception=True)
 def edit_item(request, pk):
     item = get_object_or_404(InventoryItem, pk=pk)
@@ -58,7 +58,7 @@ def edit_item(request, pk):
         form = InventoryItemForm(instance=item)
     return render(request, 'home/edit_item.html', {'form': form, 'item': item})
 
-@login_required(login_url="/login/")
+@login_required
 @permission_required('home.InventoryItem', raise_exception=True)
 def delete_item(request, pk):
     item = get_object_or_404(InventoryItem, pk=pk)
@@ -68,7 +68,7 @@ def delete_item(request, pk):
     return render(request, 'home/delete_item.html', {'item': item})
 
 
-@login_required(login_url="/login/")
+@login_required
 def pages(request):
     context = {}
     # All resource paths end in .html.

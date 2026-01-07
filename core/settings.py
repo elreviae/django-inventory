@@ -145,5 +145,15 @@ STATICFILES_DIRS = (
 )
 
 
+# L'URL vers laquelle @login_required redirige
+LOGIN_URL = 'login'  # Utilise le 'name' défini dans urls.py
+
+# L'URL où l'utilisateur est envoyé après une connexion réussie
+LOGIN_REDIRECT_URL = 'home'
+
+# L'URL où l'utilisateur est envoyé après s'être déconnecté
+LOGOUT_REDIRECT_URL = 'login'
+
+
 #############################################################
 #############################################################
